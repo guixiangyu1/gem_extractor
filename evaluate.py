@@ -14,11 +14,16 @@ def main():
     model.restore_session(config.dir_model)
 
     # create dataset
-    if sys.argv[1] == 'test':
-        test  = CoNLLDataset(config.filename_test, config.processing_word,
-                         config.processing_tag, config.max_iter)
-    elif sys.argv[1] == 'dev':
-        test = CoNLLDataset(config.filename_dev, config.processing_word,
+    if len(sys.argv) == 2:
+        if sys.argv[1] == 'test':
+            test  = CoNLLDataset(config.filename_test, config.processing_word,
+                             config.processing_tag, config.max_iter)
+        elif sys.argv[1] == 'dev':
+            test = CoNLLDataset(config.filename_dev, config.processing_word,
+                                config.processing_tag, config.max_iter)
+    else:
+        assert len(sys.argv) == 1
+        test = CoNLLDataset(config.filename_test, config.processing_word,
                             config.processing_tag, config.max_iter)
     # evaluate and interact
     model.evaluate(test)
