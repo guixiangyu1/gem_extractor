@@ -447,4 +447,4 @@ def get_chunks(seq, tags):
     #     chunk = (chunk_type, chunk_start, len(seq))
     #     chunks.append(chunk)
 
-    return chunks
+    # return chunks
